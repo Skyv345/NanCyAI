@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NanCyAI Connect - Le Réseau</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- STYLES SPÉCIFIQUES À L'APPLICATION RÉSEAU --- */
+        body {
+            background-color: #F8FAFC;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Empêche le scroll global, on scrolle dans l'app */
+        }
+
+        .network-layout {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            background: #F8FAFC;
+        }
+
+        /* --- BARRE LATÉRALE (FILTRES) --- */
+        .sidebar {
+            width: 280px;
+            background-color: var(--color-fond-carte);
+            border-right: 1px solid #E2E8F0;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .filter-section h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748B;
+            margin-bottom: 12px;
+            font-family: var(--font-corps);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .checkbox-label:hover {
+            color: var(--color-innovation);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--color-innovation);
+            cursor: pointer;
+        }
+
+        /* --- CONTENU PRINCIPAL --- */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Barre d'outils (Recherche & Onglets) */
+        .toolbar {
+            background-color: var(--color-fond-carte);
+            padding: 0 32px;
+            border-bottom: 1px solid #E2E8F0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 32px;
+            height: 100%;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748B;
+            cursor: pointer;
+            padding: 22px 0;
+            transition: all 0.2s;
+            font-family: var(--font-corps);
+        }
+
+        .tab.active {
+            color: var(--color-innovation);
+            border-bottom-color: var(--color-innovation);
+        }
+
+        .search-bar {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border: 1px solid #E2E8F0;
+            border-radius: 20px;
+            font-family: var(--font-corps);
+            font-size: 0.9rem;
+            background-color: #F1F5F9;
+            transition: all 0.2s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            background-color: #FFF;
+            border-color: var(--color-innovation);
+            box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.1);
+        }
+
+        .search-bar::before {
+            content: "🔍";
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+            opacity: 0.5;
+        }
+
+        /* Grille des profils */
+        .cards-grid {
+            padding: 32px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            flex: 1;
+            align-content: start;
+        }
+
+        /* Design des cartes */
+        .profile-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color-innovation);
+        }
+
+        .profile-card.job::before {
+            background: var(--color-stanislas);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.08);
+            border-color: #CBD5E1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--color-innovation) 0%, #4A1A75 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .profile-card.job .avatar {
+            background: linear-gradient(135deg, var(--color-stanislas) 0%, #B37D22 100%);
+        }
+
+        .card-title h4 {
+            font-size: 1.1rem;
+            color: var(--color-souverainete);
+            margin: 0 0 4px 0;
+            font-family: var(--font-titres);
+        }
+
+        .card-title span {
+            font-size: 0.85rem;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        .card-body {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: #F3E8FF;
+            color: #6B21A8;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .profile-card.job .tag {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+            background: white;
+            color: var(--color-souverainete);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-corps);
+        }
+
+        .btn-action:hover {
+            background: #F8FAFC;
+            border-color: #CBD5E1;
+        }
+
+        /* État vide */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748B;
+        }
+        
+        .empty-state text { font-size: 3rem; display: block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Logo NanCyAI" class="logo-img">
+                <strong>NanCyAI</strong>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="formation.html">Formation</a>
+            <a href="innovation.html">Innovation</a>
+            <a href="souverainete.html">Souveraineté</a>
+        </nav>
+        <a href="candidature.html" target="_blank" class="btn-primary">Rejoindre l'écosystème</a>
+    </header>
+
+    <div class="network-layout">
+        
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3>Domaine d'Expertise</h3>
+                <label class="checkbox-label"><input type="checkbox" value="Machine Learning" class="filter-cb filter-domaine" checked> Machine Learning</label>
+                <label class="checkbox-label"><input type="checkbox" value="Cybersécurité" class="filter-cb filter-domaine" checked> Cybersécurité</label>
+                <label class="checkbox-label"><input type="checkbox" value="Data Science" class="filter-cb filter-domaine" checked> Data Science</label>
+                <label class="checkbox-label"><input type="checkbox" value="Éthique IA" class="filter-cb filter-domaine" checked> Éthique IA</label>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Niveau / Profil</h3>
+                <label class="checkbox-label"><input type="checkbox" value="Junior" class="filter-cb filter-niveau" checked> Master / Junior</label>
+                <label class="checkbox-label"><input type="checkbox" value="Chercheur" class="filter-cb filter-niveau" checked> Chercheur / Doctorant</label>
+                <label class="checkbox-label"><input type="checkbox" value="Senior" class="filter-cb filter-niveau" checked> Salarié certifié</label>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="toolbar">
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('talents', this)">Talents (Étudiants & Pro)</button>
+                    <button class="tab" onclick="switchTab('missions', this)">Missions (Entreprises)</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Rechercher une compétence, un nom..." onkeyup="filterCards()">
+                </div>
+            </div>
+
+            <div class="cards-grid" id="gridContainer">
+                </div>
+        </main>
+    </div>
+
+   <script>
+        // --- 1. BASE DE DONNÉES FACTICE ---
+        const data = {
+            talents: [
+                { nom: "Lucas Martin", role: "Étudiant Master Lorraine INP", desc: "Recherche un stage de fin d'études de 6 mois spécialisé dans la détection d'anomalies réseaux via l'apprentissage profond.", tags: ["Machine Learning", "Cybersécurité", "Junior"], initials: "LM" },
+                { nom: "Sarah Dubois", role: "Chercheuse INRIA", desc: "Experte en IA de confiance et audit des biais algorithmiques. Disponible pour encadrement de projets Hackathon et conseil PME.", tags: ["Éthique IA", "Chercheur"], initials: "SD" },
+                { nom: "Amine El Fassi", role: "Salarié certifié Café IA", desc: "Chef de projet IT en reconversion. Je souhaite appliquer mes nouvelles compétences en IA générative à l'industrie locale.", tags: ["Data Science", "Senior"], initials: "AE" },
+                { nom: "Camille Laurent", role: "Doctorante LORIA", desc: "Thèse en cours sur le chiffrement homomorphe appliqué aux modèles de Machine Learning. Ouverte aux collaborations.", tags: ["Cybersécurité", "Machine Learning", "Chercheur"], initials: "CL" }
+            ],
+            missions: [
+                { nom: "CHRU de Nancy", role: "Projet Hébergement DCML", desc: "Nous cherchons une équipe pour auditer la sécurité de notre nouvelle architecture IA prédictive pour le tri des patients.", tags: ["Cybersécurité", "Data Science", "Senior"], initials: "CHR" },
+                { nom: "Memsic Tech", role: "Start-up (Incubateur)", desc: "Besoin d'un développeur junior pour optimiser nos algorithmes prédictifs appliqués aux procédés membranaires.", tags: ["Machine Learning", "Junior"], initials: "MEM" },
+                { nom: "Métropole Grand Nancy", role: "Projet Public", desc: "Recherche d'experts pour évaluer les biais de notre nouveau chatbot de services publics avant son déploiement citoyen.", tags: ["Éthique IA", "Senior"], initials: "MGN" }
+            ]
+        };
+
+        let currentTab = 'talents';
+
+        // --- 2. FONCTION D'AFFICHAGE & FILTRAGE AVANCÉ ---
+        function renderCards() {
+            const container = document.getElementById('gridContainer');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            // Récupération des filtres séparés par catégorie
+            const checkedDomaines = Array.from(document.querySelectorAll('.filter-domaine:checked')).map(cb => cb.value);
+            const checkedNiveaux = Array.from(document.querySelectorAll('.filter-niveau:checked')).map(cb => cb.value);
+            
+            container.innerHTML = ''; 
+            let itemsToRender = data[currentTab];
+            let count = 0;
+
+            itemsToRender.forEach(item => {
+                // 1. Vérification de la barre de recherche
+                const matchesSearch = item.nom.toLowerCase().includes(searchTerm) || 
+                                      item.desc.toLowerCase().includes(searchTerm) || 
+                                      item.tags.join(' ').toLowerCase().includes(searchTerm);
+                
+                // 2. Vérification des Domaines (Si rien n'est coché, on cache tout. Sinon, il faut au moins 1 match)
+                const matchesDomaine = checkedDomaines.length > 0 && item.tags.some(tag => checkedDomaines.includes(tag));
+                
+                // 3. Vérification des Niveaux (Même logique)
+                const matchesNiveau = checkedNiveaux.length > 0 && item.tags.some(tag => checkedNiveaux.includes(tag));
+
+                // Si le profil correspond à TOUTES les conditions
+                if (matchesSearch && matchesDomaine && matchesNiveau) {
+                    count++;
+                    const isJob = currentTab === 'missions';
+                    
+                    const cardHTML = `
+                        <div class="profile-card ${isJob ? 'job' : ''}">
+                            <div class="card-header">
+                                <div class="avatar">${item.initials}</div>
+                                <div class="card-title">
+                                    <h4>${item.nom}</h4>
+                                    <span>${item.role}</span>
+                                </div>
+                            </div>
+                            <div class="card-body">${item.desc}</div>
+                            <div class="tags-container">
+                                ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                            <button class="btn-action" onclick="alert('Connexion en cours avec ${item.nom}...')">
+                                ${isJob ? 'Candidater à la mission' : 'Contacter le talent'}
+                            </button>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                }
+            });
+
+            // Si la recherche ou les filtres ne donnent rien
+            if (count === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <text>📭</text>
+                        <h3>Aucun résultat</h3>
+                        <p>Essayez de cocher plus de filtres ou de modifier votre recherche.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // --- 3. GESTION DES ONGLETS ---
+        function switchTab(tabName, btnElement) {
+            currentTab = tabName;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            btnElement.classList.add('active');
+            renderCards(); // On relance le filtrage
+        }
+
+        // --- 4. ÉCOUTEURS D'ÉVÉNEMENTS (Déclencheurs) ---
+        // Dès qu'on clique sur N'IMPORTE QUELLE case à cocher, on met à jour la grille
+        document.querySelectorAll('.filter-cb').forEach(cb => {
+            cb.addEventListener('change', renderCards);
+        });
+        
+        // Initialisation au chargement
+        window.onload = renderCards;
+    </script>
+</body>
+</html>

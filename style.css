@@ -1,0 +1,840 @@
+/* --- LE DESIGN SYSTEM (Variables) --- */
+:root {
+    --color-souverainete: #0A2540; 
+    --color-innovation: #7B2CBF;   
+    --color-stanislas: #E5A93D;    
+    --color-fond-principal: #F4F5F7; 
+    --color-fond-carte: #FFFFFF;     
+    --color-texte-sombre: #1A1A1A;   
+    --color-texte-clair: #FFFFFF;    
+    
+    --font-titres: 'Space Grotesk', sans-serif;
+    --font-corps: 'Inter', sans-serif;
+    
+    --radius-bouton: 8px;        
+    --radius-carte: 16px;        
+    --ombre-douce: 0 4px 12px rgba(10, 37, 64, 0.08); 
+    --ombre-survol: 0 12px 24px rgba(123, 44, 191, 0.15); 
+}
+
+/* --- RESET & TYPOGRAPHIE GLOBALE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-corps);
+    background-color: var(--color-fond-principal);
+    color: var(--color-texte-sombre);
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo {
+    font-family: var(--font-titres);
+}
+
+/* --- BOUTONS --- */
+.btn-primary {
+    background-color: var(--color-stanislas);
+    color: var(--color-souverainete);
+    padding: 12px 24px;
+    border-radius: var(--radius-bouton);
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-texte-clair);
+    padding: 12px 24px;
+    border: 2px solid var(--color-texte-clair);
+    border-radius: var(--radius-bouton);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-texte-clair);
+    color: var(--color-souverainete);
+}
+
+/* --- NAVIGATION --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--color-fond-carte);
+    box-shadow: var(--ombre-douce);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo strong {
+    font-size: 1.5rem;
+    color: var(--color-souverainete);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-texte-sombre);
+    font-weight: 500;
+    margin: 0 15px;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-innovation);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    background-color: var(--color-souverainete);
+    /* Petit dégradé subtil pour donner de la profondeur */
+    background-image: linear-gradient(135deg, #0A2540 0%, #163B61 100%);
+    color: var(--color-texte-clair);
+    padding: 100px 5%;
+    text-align: left;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+}
+
+/* --- SECTION PILIERS --- */
+.pillars {
+    padding: 80px 5%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--color-souverainete);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--color-fond-carte);
+    padding: 40px 30px;
+    border-radius: var(--radius-carte);
+    box-shadow: var(--ombre-douce);
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--ombre-survol);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    color: var(--color-souverainete);
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    color: #4A4A4A;
+}
+
+.card-list {
+    list-style-type: none;
+    margin-bottom: 25px;
+}
+
+.card-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #EAEAEA;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.card-list li:before {
+    content: "→ ";
+    color: var(--color-innovation);
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--color-innovation);
+    font-weight: 600;
+    font-family: var(--font-titres);
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #051424; /* Bleu très sombre */
+    color: var(--color-texte-clair);
+    padding: 60px 5% 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-brand h3 {
+    color: var(--color-stanislas);
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--color-texte-clair);
+    text-decoration: none;
+    margin-left: 30px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.5;
+}
+
+/* --- RESPONSIVE DESIGN (Mobiles & Tablettes) --- */
+@media (max-width: 900px) {
+    .cards-container {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+    }
+    
+    .nav-links {
+        display: none; /* Menu caché sur mobile pour simplifier */
+    }
+}
+/* --- STYLES DES PAGES DÉTAILLÉES --- */
+.page-header {
+    background-color: var(--color-souverainete);
+    background-image: linear-gradient(135deg, #0A2540 0%, #163B61 100%);
+    color: white;
+    padding: 80px 5% 60px;
+    text-align: center;
+}
+.page-header h1 {
+    font-size: 3rem;
+    color: var(--color-stanislas);
+    margin-bottom: 15px;
+}
+.detail-container {
+    padding: 60px 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.detail-block {
+    background: var(--color-fond-carte);
+    border-radius: var(--radius-carte);
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: var(--ombre-douce);
+    border-left: 6px solid var(--color-innovation);
+}
+.detail-block h2 {
+    color: var(--color-souverainete);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.kpi-banner {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.kpi-item {
+    background: var(--color-fond-principal);
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    border: 1px solid #EAEAEA;
+}
+.kpi-item strong {
+    display: block;
+    font-size: 2rem;
+    color: var(--color-innovation);
+    font-family: var(--font-titres);
+}
+/* --- STYLE DU LOGO IMAGE --- */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 60px; /* Tu peux modifier ce chiffre pour agrandir ou rétrécir le logo */
+    width: auto;
+    margin-right: 15px; /* L'espace entre l'image et le texte */
+}
+
+.logo-link strong {
+    font-size: 1.5rem;
+    color: var(--color-souverainete);
+    font-family: var(--font-titres);
+}
+/* --- COMPORTEMENT DE DÉFILEMENT --- */
+html {
+    scroll-behavior: smooth;
+}
+/* --- STYLES SPÉCIFIQUES PAGE CANDIDATURE SPLIT-SCREEN --- */
+
+/* Conteneur principal qui divise l'écran */
+.split-layout {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 80px); /* Hauteur de l'écran moins la barre de navigation */
+    margin-top: 80px; /* Espace pour la barre de navigation fixe */
+    background-color: var(--color-fond-carte);
+}
+
+/* PANNEAU GAUCHE : INFORMATIONS */
+.info-panel {
+    flex: 1;
+    background-color: var(--color-souverainete);
+    background-image: linear-gradient(135deg, #0A2540 0%, #163B61 100%);
+    color: white;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-content {
+    position: relative;
+    z-index: 1;
+}
+
+.back-link {
+    color: var(--color-innovation);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 60px;
+    display: inline-block;
+    transition: color 0.2s;
+}
+.back-link:hover { color: #9D4EDD; }
+
+.info-content h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--color-stanislas);
+}
+
+.info-content p.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 60px;
+    max-width: 450px;
+    line-height: 1.6;
+}
+
+.benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 450px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.benefit-icon {
+    font-size: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.benefit-item p {
+    margin: 0;
+    color: #A0AEC0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* PANNEAU DROIT : FORMULAIRE */
+.form-panel {
+    flex: 1.3;
+    background-color: var(--color-fond-carte);
+    padding: 60px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    overflow-y: auto;
+}
+
+.form-wrapper {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-wrapper h2 {
+    color: var(--color-souverainete);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.form-wrapper > p {
+    color: #64748B;
+    margin-bottom: 40px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Sections du formulaire */
+.form-section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #CCC;
+}
+
+.form-section h3 {
+    font-size: 1.3rem;
+    color: var(--color-innovation);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ligne de formulaire à 2 colonnes */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+/* Groupe d'input */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-souverainete);
+    margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    padding: 14px 16px;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    font-family: var(--font-corps);
+    font-size: 0.95rem;
+    background-color: #F8FAFC;
+    transition: all 0.3s ease;
+}
+
+.input-group input:hover,
+.input-group select:hover,
+.input-group textarea:hover {
+    border-color: #CBD5E1;
+    background-color: #FFFFFF;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--color-innovation);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 4px rgba(123, 44, 191, 0.1);
+}
+
+/* Groupe de cases à cocher */
+.checkbox-intro {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+.checkbox-item input { width: auto; }
+
+/* Bouton de soumission */
+.btn-submit {
+    background-color: var(--color-souverainete);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 18px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-titres);
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--color-innovation);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(123, 44, 191, 0.2);
+}
+
+/* --- RESPONSIVE DESIGN (Mobiles) --- */
+@media (max-width: 900px) {
+    .split-layout { flex-direction: column; margin-top: 0; }
+    .info-panel { padding: 40px 20px; flex: none; }
+    .form-panel { padding: 40px 20px; flex: none; }
+    .info-content h1 { font-size: 2.2rem; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-wrapper h2 { font-size: 1.8rem; }
+}
+/* --- SECTION CARTOGRAPHIE NODALE AVANCÉE --- */
+.nodal-map {
+    padding: 80px 5%;
+    background-color: white;
+}
+
+.map-container.split-layout-map {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--color-fond-principal);
+    border-radius: var(--radius-carte);
+    box-shadow: 0 10px 30px rgba(10, 37, 64, 0.1);
+    overflow: hidden;
+    border: 1px solid #EAEAEA;
+    transition: box-shadow 0.3s ease;
+}
+
+.map-container.split-layout-map:hover {
+    box-shadow: 0 20px 60px rgba(10, 37, 64, 0.15);
+}
+
+/* La carte nodale (schématique) */
+.map-nodal-visual {
+    flex: 1.6;
+    min-height: 550px;
+    position: relative;
+    background-color: var(--color-souverainete);
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    border-right: 1px solid #EAEAEA;
+    overflow: hidden;
+}
+
+/* Lueur cyber centrale */
+.map-nodal-visual::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(123, 44, 191, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* --- SVG ET LIGNES DE CONNEXION --- */
+.map-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.connection-line {
+    fill: none;
+    stroke: rgba(229, 169, 61, 0.3); /* Or transparent par défaut */
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+/* L'animation de flux (comme des données) */
+.connection-line.animated {
+    stroke-dasharray: 10, 10;
+    animation: dash 20s linear infinite;
+}
+
+@keyframes dash {
+    to { stroke-dashoffset: -1000; }
+}
+
+/* Style de ligne active (illuminée) */
+.connection-line.active {
+    stroke: var(--color-stanislas);
+    stroke-width: 3;
+    opacity: 1 !important;
+}
+
+/* --- LES NŒUDS --- */
+.map-node {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Style du point central (radar) */
+.radar-dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-stanislas);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+/* Animation radar pour tous les nœuds */
+.radar-dot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-stanislas);
+    border-radius: 50%;
+    animation: radar-pulse 2.5s infinite ease-out;
+}
+
+@keyframes radar-pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
+}
+
+/* Couleur par groupe de nœuds */
+.node-ist .radar-dot, .node-ist .radar-dot::after { background-color: #EF4444; } /* Rouge - État */
+.node-acad .radar-dot, .node-acad .radar-dot::after { background-color: var(--color-innovation); } /* Violet - Académique */
+.node-indus .radar-dot, .node-indus .radar-dot::after { background-color: var(--color-stanislas); } /* Or - Industriel */
+
+/* État actif (quand on clique) */
+.map-node.active .radar-dot {
+    transform: translate(-50%, -50%) scale(1.5);
+    box-shadow: 0 0 15px rgba(229, 169, 61, 0.8);
+}
+
+/* L'étiquette au survol */
+.node-label {
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 37, 64, 0.95);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-family: var(--font-corps);
+}
+
+.map-node:hover .node-label {
+    opacity: 1;
+}
+
+/* --- LE PANNEAU D'INFORMATION --- */
+.map-info-nodal-panel {
+    flex: 1.1;
+    padding: 40px;
+    background: white;
+    display: flex;
+    align-items: flex-start;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
+}
+
+.map-info-placeholder {
+    text-align: center;
+    color: #64748B;
+    width: 100%;
+    align-self: center;
+}
+
+/* Styles pour le détail d'un nœud actif */
+.nodal-info-active h3 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    font-family: var(--font-titres);
+}
+
+/* Section collaborations (tags) */
+.collaborations-section {
+    background-color: var(--color-fond-principal);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #EAEAEA;
+}
+
+.collab-tag {
+    background-color: white;
+    color: var(--color-souverainete);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #D1D5DB;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .map-container.split-layout-map { flex-direction: column; }
+    .map-nodal-visual { min-height: 350px; }
+    .map-info-nodal-panel { padding: 30px; border-top: 1px solid #EAEAEA; flex: none; }
+}
+/* --- COULEURS NODALES BASÉES SUR LE DIAGRAMME RÉSEAU --- */
+
+/* Groupe 1 : Acteurs Publics (Rouge) */
+.node-pub .radar-dot, .node-pub .radar-dot::after {
+    background-color: #EF4444; /* Rouge vif */
+}
+
+/* Groupe 2 : Acteurs Académiques (Vert) */
+.node-acad .radar-dot, .node-acad .radar-dot::after {
+    background-color: #22C55E; /* Vert émeraude */
+}
+
+/* Groupe 3 : Acteurs Privés (Violet) */
+.node-priv .radar-dot, .node-priv .radar-dot::after {
+    background-color: var(--color-innovation); /* Ta couleur violette d'innovation */
+}
+
+/* Groupe 4 : Intermédiaires & Réseaux (Bleu) */
+.node-int .radar-dot, .node-int .radar-dot::after {
+    background-color: #3B82F6; /* Bleu vif */
+}
+
+/* Groupe 5 : Logistique & Infra (Gris sombre pour le Datacenter) */
+.node-infra .radar-dot, .node-infra .radar-dot::after {
+    background-color: #64748B; /* Gris ardoise */
+}
+/* --- LE HUB CENTRAL --- */
+.node-hub {
+    z-index: 20 !important; /* Toujours au-dessus */
+}
+
+.hub-dot {
+    width: 24px !important;
+    height: 24px !important;
+    background-color: var(--color-stanislas) !important;
+    box-shadow: 0 0 30px var(--color-stanislas) !important;
+}
+
+.hub-dot::after {
+    animation: radar-pulse 3s infinite ease-out !important;
+    border: 2px solid var(--color-stanislas);
+}
+
+.node-hub .node-label {
+    background: var(--color-stanislas);
+    color: var(--color-souverainete);
+    font-weight: 800;
+}
+
+/* On force les lignes qui partent du hub à être plus visibles */
+path.connection-line.active {
+    stroke: var(--color-stanislas);
+    stroke-width: 3;
+    opacity: 0.6;
+    stroke-dasharray: none; /* Lignes pleines pour le hub */
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NanCyAI - L'Excellence IA & Cyber</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Logo NanCyAI" class="logo-img">
+                <strong>NanCyAI</strong>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="formation.html">Formation</a>
+            <a href="innovation.html">Innovation</a>
+            <a href="souverainete.html">Souveraineté</a>
+        </nav>
+        <a href="candidature.html" target="_blank" class="btn-primary">Rejoindre l'écosystème</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>L'Excellence IA & Cyber au cœur de l'Europe.</h1>
+            <p>Fédérer les talents, sécuriser l'innovation, et rayonner depuis la Métropole du Grand Nancy.</p>
+            <div class="hero-actions">
+                <a href="#programmes" class="btn-primary">Découvrir nos programmes</a>
+                <a href="reseau.html" target="_blank" class="btn-secondary" style="background-color: rgba(255,255,255,0.1);">Tester la plateforme Connect</a>
+                <a href="contact.html" target="_blank" class="btn-secondary">Nous contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="pillars" id="programmes">
+        <div class="section-header">
+            <h2>Notre Stratégie en 3 Piliers</h2>
+            <p>Un guichet unique pour tous les acteurs du territoire.</p>
+        </div>
+
+        <div class="cards-container">
+            <div class="card" id="formation">
+                <div class="card-icon">🎓</div>
+                <h3>Formation</h3>
+                <p><strong>Développez les compétences de demain.</strong><br>Que vous soyez étudiant, salarié en reconversion ou citoyen curieux, NanCyAI propose des parcours d'excellence adaptés à vos besoins.</p>
+                <ul class="card-list">
+                    <li>Master Universitaire (Lorraine INP)</li>
+                    <li>Formation Continue (Café IA)</li>
+                    <li>Sensibilisation Citoyenne (FIDLE)</li>
+                </ul>
+                <a href="#" class="card-link">En savoir plus &rarr;</a>
+            </div>
+
+            <div class="card" id="innovation">
+                <div class="card-icon">💡</div>
+                <h3>Innovation</h3>
+                <p><strong>Accélérez vos projets technologiques.</strong><br>Nous brisons les barrières entre recherche et industrie. Trouvez vos talents, incubez votre start-up, et résolvez vos défis.</p>
+                <ul class="card-list">
+                    <li>Réseau "LinkedIn de l'IA"</li>
+                    <li>Incubateur Technologique</li>
+                    <li>Hackathons IA & Cyber</li>
+                </ul>
+                <a href="#" class="card-link">En savoir plus &rarr;</a>
+            </div>
+
+            <div class="card" id="souverainete">
+                <div class="card-icon">🛡️</div>
+                <h3>Souveraineté</h3>
+                <p><strong>Innovez en toute confiance.</strong><br>Accédez à des puissances de calcul locales souveraines et valorisez votre démarche responsable grâce à notre label éthique.</p>
+                <ul class="card-list">
+                    <li>Label Éthique (via Labelia)</li>
+                    <li>Accès Centre de Calcul Explore</li>
+                    <li>Hébergement Souverain</li>
+                </ul>
+                <a href="#" class="card-link">En savoir plus &rarr;</a>
+            </div>
+        </div>
+    </section>
+<section class="map-section nodal-map" id="territoire">
+        <div class="section-header">
+            <h2>L'Épicentre de l'Innovation</h2>
+            <p>NanCyAI : Le guichet unique coordonnant les forces académiques, privées et publiques.</p>
+        </div>
+
+        <div class="map-container split-layout-map">
+            <div class="map-nodal-visual">
+                <svg class="map-connections" id="connectionsSVG" width="100%" height="100%"></svg>
+
+                <div class="map-node node-hub" style="top: 50%; left: 50%;" data-id="hub" onclick="selectNode('hub')">
+                    <span class="radar-dot hub-dot"></span>
+                    <span class="node-label">Pôle d'Excellence NanCyAI</span>
+                </div>
+
+                <div class="map-node node-pub" style="top: 15%; left: 80%;" data-id="pub1" onclick="selectNode('pub1')"><span class="radar-dot"></span><span class="node-label">État & Région</span></div>
+                <div class="map-node node-pub" style="top: 25%; left: 85%;" data-id="pub2" onclick="selectNode('pub2')"><span class="radar-dot"></span><span class="node-label">Métropole Grand Nancy</span></div>
+                <div class="map-node node-pub" style="top: 20%; left: 65%;" data-id="pub3" onclick="selectNode('pub3')"><span class="radar-dot"></span><span class="node-label">France 2030 / Bpifrance</span></div>
+                <div class="map-node node-acad" style="top: 35%; left: 20%;" data-id="acad1" onclick="selectNode('acad1')"><span class="radar-dot"></span><span class="node-label">Recherche (LORIA/INRIA)</span></div>
+                <div class="map-node node-acad" style="top: 65%; left: 25%;" data-id="acad2" onclick="selectNode('acad2')"><span class="radar-dot"></span><span class="node-label">Univ. Lorraine & CHRU</span></div>
+                <div class="map-node node-acad" style="top: 55%; left: 10%;" data-id="acad3" onclick="selectNode('acad3')"><span class="radar-dot"></span><span class="node-label">Lorraine INP</span></div>
+                <div class="map-node node-priv" style="top: 15%; left: 45%;" data-id="priv1" onclick="selectNode('priv1')"><span class="radar-dot"></span><span class="node-label">Start-ups (Memsic...)</span></div>
+                <div class="map-node node-priv" style="top: 80%; left: 50%;" data-id="priv2" onclick="selectNode('priv2')"><span class="radar-dot"></span><span class="node-label">PME & Grands Groupes</span></div>
+                <div class="map-node node-int" style="top: 85%; left: 20%;" data-id="int1" onclick="selectNode('int1')"><span class="radar-dot"></span><span class="node-label">Incubateurs & Clusters</span></div>
+                <div class="map-node node-infra" style="top: 60%; left: 80%;" data-id="infra1" onclick="selectNode('infra1')"><span class="radar-dot"></span><span class="node-label">DCML (Datacenter)</span></div>
+            </div>
+
+            <div class="map-info-nodal-panel" id="nodal-info">
+                <div class="map-info-placeholder">
+                    <h3>Explorez l'Unité du Pôle</h3>
+                    <p>Cliquez sur le Hub central NanCyAI ou les acteurs partenaires pour voir les flux de collaboration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const nodalData = {
+            'hub': { 
+                title: 'Pôle d\'Excellence NanCyAI', 
+                role: 'Gouvernance & Guichet Unique', 
+                icon: '🌟', 
+                contrib: 'Point de convergence stratégique du territoire. NanCyAI assure la coordination entre les besoins industriels, les ressources académiques et les soutiens publics.',
+                collaborates: ['pub1', 'pub2', 'pub3', 'acad1', 'acad2', 'acad3', 'priv1', 'priv2', 'int1', 'infra1'] // Tout le monde est relié au hub
+            },
+            // On garde les autres données (pub1, acad1, etc.) de l'étape précédente ici...
+            'pub1': { title: 'État & Région', role: 'Stratégie', icon: '🏛️', contrib: 'Co-financeurs et validateurs éthiques.', collaborates: ['hub'] },
+            'pub2': { title: 'Métropole Grand Nancy', role: 'Ancrage', icon: '📈', contrib: 'Porteur politique du pôle.', collaborates: ['hub', 'infra1'] },
+            'pub3': { title: 'France 2030', role: 'Amorçage', icon: '🚀', contrib: 'Soutien financier à l\'innovation.', collaborates: ['hub'] },
+            'acad1': { title: 'Recherche (LORIA/INRIA)', role: 'Science', icon: '🔬', contrib: 'Expertise IA et Cyber.', collaborates: ['hub', 'acad2'] },
+            'acad2': { title: 'Univ. Lorraine & CHRU', role: 'Santé & Data', icon: '🏥', contrib: 'Application médicale souveraine.', collaborates: ['hub', 'infra1'] },
+            'acad3': { title: 'Lorraine INP', role: 'Talents', icon: '🎓', contrib: 'Vivier d\'ingénieurs spécialisés.', collaborates: ['hub'] },
+            'priv1': { title: 'Start-ups', role: 'Agilité', icon: '💡', contrib: 'Memsic Tech, Spark, etc.', collaborates: ['hub', 'int1'] },
+            'priv2': { title: 'PME & Groupes', role: 'Déploiement', icon: '🏭', contrib: 'Saint-Gobain et services IA.', collaborates: ['hub'] },
+            'int1': { title: 'Incubateurs', role: 'Appui', icon: '🐣', contrib: 'Accompagnement de projets.', collaborates: ['hub', 'priv1'] },
+            'infra1': { title: 'DCML', role: 'Logistique', icon: '💻', contrib: 'Hébergement souverain.', collaborates: ['hub', 'acad2'] }
+        };
+
+        function drawConnections() {
+            const svg = document.getElementById('connectionsSVG');
+            svg.innerHTML = ''; 
+            const nodes = document.querySelectorAll('.map-node');
+            const mapRect = document.querySelector('.map-nodal-visual').getBoundingClientRect();
+
+            nodes.forEach(node => {
+                const nodeId = node.getAttribute('data-id');
+                const data = nodalData[nodeId];
+                if (data && data.collaborates) {
+                    const startRect = node.getBoundingClientRect();
+                    const startX = startRect.left - mapRect.left + startRect.width / 2;
+                    const startY = startRect.top - mapRect.top + startRect.height / 2;
+
+                    data.collaborates.forEach(targetId => {
+                        const targetNode = document.querySelector(`.map-node[data-id="${targetId}"]`);
+                        if (targetNode) {
+                            const endRect = targetNode.getBoundingClientRect();
+                            const endX = endRect.left - mapRect.left + endRect.width / 2;
+                            const endY = endRect.top - mapRect.top + endRect.height / 2;
+                            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                            path.setAttribute('d', `M${startX} ${startY} L${endX} ${endY}`);
+                            path.setAttribute('class', nodeId === 'hub' ? 'connection-line active' : 'connection-line animated');
+                            svg.appendChild(path);
+                        }
+                    });
+                }
+            });
+        }
+
+        function selectNode(id) {
+            const infoPanel = document.getElementById('nodal-info');
+            const data = nodalData[id];
+            document.querySelectorAll('.map-node').forEach(node => node.classList.remove('active'));
+            document.querySelector(`.map-node[data-id="${id}"]`).classList.add('active');
+            
+            infoPanel.style.opacity = 0;
+            setTimeout(() => {
+                infoPanel.innerHTML = `
+                    <div class="map-info-content nodal-info-active">
+                        <span style="font-size: 2.5rem; display:block; margin-bottom: 10px;">${data.icon}</span>
+                        <h3>${data.title}</h3>
+                        <strong style="color: var(--color-innovation); font-size: 0.9rem; display:block; margin-bottom: 15px;">${data.role}</strong>
+                        <p>${data.contrib}</p>
+                    </div>
+                `;
+                infoPanel.style.opacity = 1;
+            }, 200);
+        }
+
+        window.onload = () => { drawConnections(); window.addEventListener('resize', drawConnections); };
+    </script>
+   
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>NanCyAI</h3>
+                <p>Pôle d'Excellence IA & Cyber<br>Métropole du Grand Nancy</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Mentions Légales</a>
+                <a href="#">Charte Éthique</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NanCyAI. Tous droits réservés.</p>
+        </div>
+
+
+
+    </section>
+    </footer>
+
+</body>
+</html>

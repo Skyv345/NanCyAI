@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidater à l'Écosystème - NanCyAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+   <style>
+        body {
+            background-color: var(--color-souverainete);
+            background-image: linear-gradient(135deg, #0A2540 0%, #163B61 100%);
+            /* CORRECTION : On enlève le padding et on met les marges à 0 */
+            margin: 0;
+            padding: 0;
+        }
+        .app-form-container {
+            background-color: var(--color-fond-principal);
+            max-width: 850px;
+            /* CORRECTION : On déplace l'espacement ici pour décoller le formulaire de la barre */
+            margin: 40px auto;
+            border-radius: var(--radius-carte);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        .form-header {
+            background-color: var(--color-fond-carte);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 1px solid #EAEAEA;
+        }
+        .form-header h1 {
+            color: var(--color-souverainete);
+            margin-bottom: 10px;
+        }
+        .form-header p { color: #666; }
+        
+        .form-body { padding: 40px; }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #CCC;
+        }
+        .form-section h2 {
+            font-size: 1.3rem;
+            color: var(--color-innovation);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        .checkbox-item input { width: auto; }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Logo NanCyAI" class="logo-img">
+                <strong>NanCyAI</strong>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="formation.html">Formation</a>
+            <a href="innovation.html">Innovation</a>
+            <a href="souverainete.html">Souveraineté</a>
+        </nav>
+        <a href="candidature.html" target="_blank" class="btn-primary">Rejoindre l'écosystème</a>
+    </header>
+
+    <div class="split-layout">
+        
+        <aside class="info-panel">
+            <div class="info-content">
+                <a href="index.html" class="back-link">&larr; Retour à l'accueil</a>
+                
+                <h1>Rejoindre l'écosystème NanCyAI.</h1>
+                <p class="subtitle">Candidatez pour intégrer le premier pôle d'excellence IA & Cyber du Grand Nancy et propulsez votre projet vers l'excellence.</p>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🚀</span>
+                        <p>Accompagnement sur-mesure via notre incubateur technologique.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🛡️</span>
+                        <p>Préparation et audit pour le Label Éthique NanCyAI.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎓</span>
+                        <p>Accès privilégié aux talents issus de nos formations (Master, Café IA...).</p>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💻</span>
+                        <p>Mise à disposition de puissance de calcul souveraine locale.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="form-panel">
+            <div class="form-wrapper">
+                <h2>Dossier de Candidature</h2>
+                <p>Merci de remplir ce formulaire avec précision. Notre comité de sélection l'étudiera avec la plus grande attention.</p>
+
+                <form action="https://formspree.io/f/TON_CODE_ICI" method="POST">
+                    
+                    <div class="form-section">
+                        <h3>👤 Identité du Candidat</h3>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="prenom">Prénom</label>
+                                <input type="text" id="prenom" name="prenom" placeholder="Ada" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="nom">Nom</label>
+                                <input type="text" id="nom" name="nom" placeholder="Lovelace" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">E-mail professionnel</label>
+                            <input type="email" id="email" name="email" placeholder="ada@entreprise.fr" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="role">Votre rôle dans le projet</label>
+                            <input type="text" id="role" name="role" placeholder="ex: Fondateur, CTO, Responsable Innovation">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>🚀 Présentation du Projet / Entreprise</h3>
+                        <div class="input-group">
+                            <label for="nom_projet">Nom de la structure</label>
+                            <input type="text" id="nom_projet" name="nom_projet" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="maturite">Stade de maturité</label>
+                                <select id="maturite" name="maturite" required>
+                                    <option value="" disabled selected>Sélectionnez...</option>
+                                    <option value="Idee">Idée / Pré-incubation</option>
+                                    <option value="MVP">MVP / Prototype</option>
+                                    <option value="Seed">Lancement commercial (Seed)</option>
+                                    <option value="Scale">Accélération (Scale-up)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="secteur">Secteur d'application principal</label>
+                                <select id="secteur" name="secteur" required>
+                                    <option value="" disabled selected>Sélectionnez...</option>
+                                    <option value="Sante">Santé & CHRU</option>
+                                    <option value="Industrie">Industrie 4.0</option>
+                                    <option value="Public">Services Publics / Collectivités</option>
+                                    <option value="Cyber">Cybersécurité pure</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="pitch">Résumé du projet (Pitch en 2 phrases)</label>
+                            <textarea id="pitch" name="pitch" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>🛡️ Vos besoins au sein de NanCyAI</h3>
+                        <p class="checkbox-intro">Sélectionnez les ressources dont vous avez besoin :</p>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="checkbox" name="besoin_incubateur"> Accompagnement Incubateur</label>
+                            <label class="checkbox-item"><input type="checkbox" name="besoin_calcul"> Puissance de calcul (Explore)</label>
+                            <label class="checkbox-item"><input type="checkbox" name="besoin_label"> Candidature Label Éthique</label>
+                            <label class="checkbox-item"><input type="checkbox" name="besoin_talent"> Recrutement de talents (Master)</label>
+                            <label class="checkbox-item"><input type="checkbox" name="besoin_networking"> Networking & Speed-dating</label>
+                            <label class="checkbox-item"><input type="checkbox" name="besoin_cyber"> Audit Cybersécurité</label>
+                        </div>
+                        <div class="input-group" style="margin-top:25px;">
+                            <label for="ethique">Comment votre projet s'inscrit-il dans une démarche d'IA éthique et souveraine ?</label>
+                            <textarea id="ethique" name="ethique" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Soumettre mon dossier de candidature</button>
+                </form>
+            </div>
+        </main>
+
+    </div>
+
+</body>
+
+</html>
