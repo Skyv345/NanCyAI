@@ -244,6 +244,84 @@ footer {
     font-size: 0.85rem;
     opacity: 0.5;
 }
+/* --- SECTION PILLIERS REVISITÉE --- */
+.pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pillar-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #E2E8F0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Effet de lueur et soulèvement au survol */
+.pillar-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(10, 37, 64, 0.1);
+    border-color: var(--color-innovation);
+}
+
+.pillar-icon {
+    font-size: 3.5rem; /* Plus grand pour plus d'impact */
+    margin-bottom: 25px;
+    background: #F8FAFC;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+.pillar-card:hover .pillar-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.pillar-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-souverainete);
+    margin-bottom: 15px;
+    font-family: var(--font-titres);
+}
+
+.pillar-card p {
+    color: #64748B;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+/* Style du lien "En savoir plus" */
+.btn-text {
+    color: var(--color-innovation);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto; /* Pousse le lien en bas de la carte */
+    transition: gap 0.2s;
+}
+
+.btn-text:hover {
+    gap: 12px; /* Petit effet de flèche qui bouge */
+    color: var(--color-souverainete);
+}
 
 /* --- RESPONSIVE DESIGN (Mobiles & Tablettes) --- */
 @media (max-width: 900px) {
