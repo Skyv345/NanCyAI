@@ -317,6 +317,51 @@ footer {
     margin-top: auto; /* Pousse le lien en bas de la carte */
     transition: gap 0.2s;
 }
+.map-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.map-container-new {
+    display: flex;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden; /* Empêche le débordement */
+    border: 1px solid #eee;
+    min-height: 550px;
+}
+
+.map-nodal-visual {
+    flex: 1.6; /* Prend plus de place pour la carte */
+    position: relative;
+    background-color: #0A2540; /* Bleu nuit profond */
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.map-info-nodal-panel {
+    flex: 1; /* Panneau d'info fixe à droite */
+    padding: 40px;
+    background: #fff;
+    border-left: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+/* Couleurs des nœuds basées sur le rapport */
+.node-pub .radar-dot { background-color: #ef4444; } /* Rouge Public [cite: 24] */
+.node-acad .radar-dot { background-color: #22c55e; } /* Vert Académique [cite: 23] */
+.node-priv .radar-dot { background-color: #a855f7; } /* Violet Privé [cite: 25] */
+.node-int .radar-dot { background-color: #3b82f6; } /* Bleu Réseaux [cite: 26] */
+
+.node-hub .hub-dot { 
+    width: 24px; 
+    height: 24px; 
+    background-color: #f1c40f; /* Or pour le Hub [cite: 32] */
+}
 
 .btn-text:hover {
     gap: 12px; /* Petit effet de flèche qui bouge */
@@ -915,4 +960,191 @@ path.connection-line.active {
     stroke-width: 3;
     opacity: 0.6;
     stroke-dasharray: none; /* Lignes pleines pour le hub */
+}
+/* --- SECTION MAP NANCYAI 2.0 - LOOK TECH AIR & GLASSMorphism --- */
+.tech-map {
+    position: relative;
+    padding: 80px 5%;
+    background-color: #F8FAFC; /* Fond clair global */
+    overflow: hidden;
+}
+
+/* Arrière-plan dégradé doux */
+.map-bg-gradient {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, rgba(10, 37, 64, 0.01) 70%, transparent 100%);
+    pointer-events: none;
+}
+
+.map-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.map-header h2 {
+    color: var(--color-souverainete);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.map-header p {
+    color: #64748B;
+    font-size: 1rem;
+}
+
+/* LE PANNEAU GLASS (Conteneur de la carte) */
+.map-glass-panel {
+    max-width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent */
+    backdrop-filter: blur(20px); /* Flou d'arrière-plan */
+    border-radius: var(--radius-carte, 20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 40px rgba(10, 37, 64, 0.08);
+    position: relative;
+    overflow: hidden; /* Empêche les éléments de sortir */
+}
+
+/* --- SVG ET LIGNES DE CONNEXION --- */
+.map-connections-svg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; /* Ne pas bloquer les clics */
+    z-index: 5;
+}
+
+.connection-line {
+    fill: none;
+    stroke: rgba(229, 169, 61, 0.2); /* Or très transparent */
+    stroke-width: 1px; /* FINS */
+    transition: all 0.3s ease;
+}
+
+/* L'animation de flux (Données qui circulent) */
+.connection-line.animated-flux {
+    stroke-dasharray: 8, 8;
+    animation: flux-dash 15s linear infinite;
+}
+
+@keyframes flux-dash {
+    to { stroke-dashoffset: -1000; }
+}
+
+/* --- LES NŒUDS --- */
+.map-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Style du point central (pulse) */
+.pulse-dot {
+    display: block;
+    width: 10px; /* Plus petit */
+    height: 10px;
+    background-color: var(--color-stanislas, #f1c40f);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(229, 169, 61, 0.6);
+}
+
+/* Animation radar douce */
+.pulse-dot::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    background-color: var(--color-stanislas, #f1c40f);
+    border-radius: 50%;
+    animation: radar-pulse 2.5s infinite ease-out;
+}
+
+@keyframes radar-pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
+}
+
+/* Couleur par groupe de nœuds */
+.node-hub .pulse-dot, .node-hub .pulse-dot::after { background-color: #f1c40f; } /* Or */
+.node-pub .pulse-dot, .node-pub .pulse-dot::after { background-color: #ef4444; } /* Rouge - État */
+.node-acad .pulse-dot, .node-acad .pulse-dot::after { background-color: #22c55e; } /* Vert - Académique */
+.node-priv .pulse-dot, .node-priv .pulse-dot::after { background-color: var(--color-innovation, #a855f7); } /* Violet - Privé */
+.node-int .pulse-dot, .node-int .pulse-dot::after { background-color: #3b82f6; } /* Bleu - Réseaux */
+
+/* L'étiquette au survol */
+.node-label {
+    position: absolute;
+    left: 20px; top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 37, 64, 0.9);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    font-family: var(--font-corps, sans-serif);
+}
+
+.map-node:hover .node-label {
+    opacity: 1;
+}
+
+/* --- LE PANNEAU D'INFORMATION FLOTTANT (Glassmorphism) --- */
+.map-floating-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 15;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    pointer-events: none; /* Ne pas gêner par défaut */
+}
+
+.map-floating-info.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.close-info {
+    position: absolute;
+    top: 10px; right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #A0AEC0;
+}
+.close-info:hover { color: #475569; }
+
+#info-title {
+    font-family: var(--font-titres, sans-serif);
+    font-size: 1.1rem;
+    color: var(--color-souverainete, #0A2540);
+    margin: 0 0 5px 0;
+}
+
+/* Responsive (Mobiles) */
+@media (max-width: 768px) {
+    .map-glass-panel { height: 400px; margin: 0; }
+    .map-floating-info { width: calc(100% - 40px); left: 20px; bottom: 10px; }
+    .node-label { display: none; } /* Trop petit pour le texte */
 }

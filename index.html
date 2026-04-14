@@ -75,22 +75,88 @@
             <div class="map-nodal-visual">
                 <svg class="map-connections" id="connectionsSVG" width="100%" height="100%"></svg>
 
+              <section class="map-section nodal-map" id="territoire">
+    <div class="section-header">
+        <h2>L'Épicentre de l'Innovation</h2>
+        <p>NanCyAI : Le guichet unique coordonnant les forces académiques, privées et publiques.</p>
+    </div>
+
+    <div class="map-wrapper">
+        <div class="map-container-new">
+            <div class="map-nodal-visual">
+                <svg class="map-connections" id="connectionsSVG" width="100%" height="100%"></svg>
+
                 <div class="map-node node-hub" style="top: 50%; left: 50%;" data-id="hub" onclick="selectNode('hub')">
                     <span class="radar-dot hub-dot"></span>
-                    <span class="node-label">Pôle d'Excellence NanCyAI</span>
+                    <span class="node-label">NanCyAI</span>
                 </div>
 
-                <div class="map-node node-pub" style="top: 15%; left: 80%;" data-id="pub1" onclick="selectNode('pub1')"><span class="radar-dot"></span><span class="node-label">État & Région</span></div>
-                <div class="map-node node-pub" style="top: 25%; left: 85%;" data-id="pub2" onclick="selectNode('pub2')"><span class="radar-dot"></span><span class="node-label">Métropole Grand Nancy</span></div>
-                <div class="map-node node-pub" style="top: 20%; left: 65%;" data-id="pub3" onclick="selectNode('pub3')"><span class="radar-dot"></span><span class="node-label">France 2030 / Bpifrance</span></div>
-                <div class="map-node node-acad" style="top: 35%; left: 20%;" data-id="acad1" onclick="selectNode('acad1')"><span class="radar-dot"></span><span class="node-label">Recherche (LORIA/INRIA)</span></div>
-                <div class="map-node node-acad" style="top: 65%; left: 25%;" data-id="acad2" onclick="selectNode('acad2')"><span class="radar-dot"></span><span class="node-label">Univ. Lorraine & CHRU</span></div>
-                <div class="map-node node-acad" style="top: 55%; left: 10%;" data-id="acad3" onclick="selectNode('acad3')"><span class="radar-dot"></span><span class="node-label">Lorraine INP</span></div>
-                <div class="map-node node-priv" style="top: 15%; left: 45%;" data-id="priv1" onclick="selectNode('priv1')"><span class="radar-dot"></span><span class="node-label">Start-ups (Memsic...)</span></div>
-                <div class="map-node node-priv" style="top: 80%; left: 50%;" data-id="priv2" onclick="selectNode('priv2')"><span class="radar-dot"></span><span class="node-label">PME & Grands Groupes</span></div>
-                <div class="map-node node-int" style="top: 85%; left: 20%;" data-id="int1" onclick="selectNode('int1')"><span class="radar-dot"></span><span class="node-label">Incubateurs & Clusters</span></div>
-                <div class="map-node node-infra" style="top: 60%; left: 80%;" data-id="infra1" onclick="selectNode('infra1')"><span class="radar-dot"></span><span class="node-label">DCML (Datacenter)</span></div>
+                <div class="map-node node-pub" style="top: 15%; left: 75%;" data-id="pub1" onclick="selectNode('pub1')"><span class="radar-dot"></span><span class="node-label">État & Région</span></div>
+                <div class="map-node node-pub" style="top: 25%; left: 60%;" data-id="pub2" onclick="selectNode('pub2')"><span class="radar-dot"></span><span class="node-label">Métropole</span></div>
+
+                <div class="map-node node-acad" style="top: 35%; left: 20%;" data-id="acad1" onclick="selectNode('acad1')"><span class="radar-dot"></span><span class="node-label">Recherche</span></div>
+                <div class="map-node node-acad" style="top: 65%; left: 25%;" data-id="acad2" onclick="selectNode('acad2')"><span class="radar-dot"></span><span class="node-label">Formation</span></div>
+
+                <div class="map-node node-priv" style="top: 80%; left: 40%;" data-id="priv1" onclick="selectNode('priv1')"><span class="radar-dot"></span><span class="node-label">Start-ups</span></div>
+                <div class="map-node node-priv" style="top: 75%; left: 70%;" data-id="priv2" onclick="selectNode('priv2')"><span class="radar-dot"></span><span class="node-label">Grands Groupes</span></div>
+
+                <div class="map-node node-int" style="top: 45%; left: 85%;" data-id="int1" onclick="selectNode('int1')"><span class="radar-dot"></span><span class="node-label">Réseaux Éco</span></div>
             </div>
+
+            <div class="map-info-nodal-panel" id="nodal-info">
+                <div class="map-info-placeholder">
+                    <span style="font-size: 3rem; display:block; margin-bottom: 20px;">🕸️</span>
+                    <h3>Explorez l'Unité du Pôle</h3>
+                    <p>Cliquez sur le Hub central NanCyAI ou les acteurs partenaires pour voir les flux de collaboration.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+const nodalData = {
+    'hub': { 
+        title: 'Pôle d\'Excellence NanCyAI', 
+        role: 'Gouvernance & Guichet Unique', 
+        icon: '🌟', 
+        contrib: 'Point de convergence stratégique du territoire. NanCyAI assure la coordination entre les besoins industriels, les ressources académiques et les soutiens publics.',
+        collaborates: ['pub1', 'pub2', 'acad1', 'acad2', 'priv1', 'priv2', 'int1'] 
+    },
+    'pub1': { title: 'État & Région Grand Est', role: 'Soutien Stratégique', icon: '🏛️', contrib: 'Validateur des orientations et co-financeur via France 2030.', collaborates: ['hub'] },
+    'pub2': { title: 'Métropole du Grand Nancy', role: 'Ancrage Territorial', icon: '📈', contrib: 'Porteur politique assurant l\'attractivité locale.', collaborates: ['hub', 'int1'] },
+    'acad1': { title: 'Recherche (LORIA, INRIA, CNRS)', role: 'Excellence Scientifique', icon: '🔬', contrib: 'Fournit l\'expertise scientifique pour l\'IA responsable.', collaborates: ['hub', 'acad2'] },
+    'acad2': { title: 'Formation (Univ. Lorraine, INP)', role: 'Vivier de Talents', icon: '🎓', contrib: 'Assure le Master IA et la formation des futurs ingénieurs.', collaborates: ['hub', 'priv1'] },
+    'priv1': { title: 'Start-ups (Memsic Tech, Cybi...)', role: 'Innovation Agile', icon: '💡', contrib: 'Jeunes entreprises appliquant l\'IA aux secteurs de pointe.', collaborates: ['hub', 'int1'] },
+    'priv2': { title: 'PME & Grands Groupes', role: 'Impact Économique', icon: '🏭', contrib: 'Intègrent l\'IA dans les processus industriels et de santé.', collaborates: ['hub'] },
+    'int1': { title: 'Réseaux (CCI, MEDEF, Lorr\'Up)', role: 'Accompagnement', icon: '🤝', contrib: 'Facilitent la mise en réseau et l\'identification des besoins des PME.', collaborates: ['hub', 'pub2'] }
+};
+
+function selectNode(id) {
+    const infoPanel = document.getElementById('nodal-info');
+    const data = nodalData[id];
+    document.querySelectorAll('.map-node').forEach(node => node.classList.remove('active'));
+    document.querySelector(`.map-node[data-id="${id}"]`).classList.add('active');
+    
+    infoPanel.style.opacity = 0;
+    setTimeout(() => {
+        infoPanel.innerHTML = `
+            <div class="map-info-content nodal-info-active">
+                <span style="font-size: 2.5rem; display:block; margin-bottom: 10px;">${data.icon}</span>
+                <h3 style="color: var(--color-innovation); margin-bottom: 5px;">${data.title}</h3>
+                <strong style="color: #64748B; font-size: 0.9rem; display:block; margin-bottom: 15px;">${data.role}</strong>
+                <p style="color: #475569; line-height: 1.6;">${data.contrib}</p>
+            </div>
+        `;
+        infoPanel.style.opacity = 1;
+    }, 200);
+}
+
+// Initialisation au chargement pour dessiner les lignes
+window.addEventListener('load', () => {
+    // Ton ancienne fonction drawConnections() ici
+});
+</script>
 
             <div class="map-info-nodal-panel" id="nodal-info">
                 <div class="map-info-placeholder">
