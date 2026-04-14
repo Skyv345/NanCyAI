@@ -115,6 +115,40 @@
 </section>
 
 <script>
+    function drawConnections() {
+    const svg = document.getElementById('connectionsSVG');
+    svg.innerHTML = ''; // Nettoie le SVG avant de redessiner
+    
+    const mapRect = document.querySelector('.map-visual-area').getBoundingClientRect();
+    const hubNode = document.querySelector('.node-hub').getBoundingClientRect();
+    const hubX = hubNode.left - mapRect.left + hubNode.width / 2;
+    const hubY = hubNode.top - mapRect.top + hubNode.height / 2;
+
+    // On récupère tous les autres nœuds (partenaires)
+    const partners = document.querySelectorAll('.map-node:not(.node-hub)');
+
+    partners.forEach(node => {
+        const nodeRect = node.getBoundingClientRect();
+        const nodeX = nodeRect.left - mapRect.left + nodeRect.width / 2;
+        const nodeY = nodeRect.top - mapRect.top + nodeRect.height / 2;
+
+        // Création de la ligne SVG
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', hubX);
+        line.setAttribute('y1', hubY);
+        line.setAttribute('x2', nodeX);
+        line.setAttribute('y2', nodeY);
+        
+        // Classes pour le style et l'animation
+        line.setAttribute('class', 'connection-line animated-flux');
+        
+        svg.appendChild(line);
+    });
+}
+
+// Relance le dessin si on redimensionne la fenêtre
+window.addEventListener('resize', drawConnections);
+window.onload = drawConnections;
 const nodalData = {
     'hub': { 
         title: 'Pôle d\'Excellence NanCyAI', 
@@ -168,6 +202,40 @@ window.addEventListener('load', () => {
     </section>
 
     <script>
+        function drawConnections() {
+    const svg = document.getElementById('connectionsSVG');
+    svg.innerHTML = ''; // Nettoie le SVG avant de redessiner
+    
+    const mapRect = document.querySelector('.map-visual-area').getBoundingClientRect();
+    const hubNode = document.querySelector('.node-hub').getBoundingClientRect();
+    const hubX = hubNode.left - mapRect.left + hubNode.width / 2;
+    const hubY = hubNode.top - mapRect.top + hubNode.height / 2;
+
+    // On récupère tous les autres nœuds (partenaires)
+    const partners = document.querySelectorAll('.map-node:not(.node-hub)');
+
+    partners.forEach(node => {
+        const nodeRect = node.getBoundingClientRect();
+        const nodeX = nodeRect.left - mapRect.left + nodeRect.width / 2;
+        const nodeY = nodeRect.top - mapRect.top + nodeRect.height / 2;
+
+        // Création de la ligne SVG
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', hubX);
+        line.setAttribute('y1', hubY);
+        line.setAttribute('x2', nodeX);
+        line.setAttribute('y2', nodeY);
+        
+        // Classes pour le style et l'animation
+        line.setAttribute('class', 'connection-line animated-flux');
+        
+        svg.appendChild(line);
+    });
+}
+
+// Relance le dessin si on redimensionne la fenêtre
+window.addEventListener('resize', drawConnections);
+window.onload = drawConnections;
         const nodalData = {
             'hub': { 
                 title: 'Pôle d\'Excellence NanCyAI', 
